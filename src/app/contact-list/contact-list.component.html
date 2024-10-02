@@ -1,0 +1,45 @@
+<div class="bg-gray-900 text-white min-h-screen">
+    <h1 class="mb-6 p-5 text-3xl sm:text-4xl font-bold text-center text-white neon-shadow" style="font-family: 'Orbitron', sans-serif;">Mis contactos</h1>
+    <div class="flex justify-center px-4">
+        <div class="w-full lg:w-3/4 xl:w-2/3 overflow-x-auto p-4">
+            <div class="flex justify-end mb-4">
+                <a class="neon-button-new font-bold py-2 px-6 rounded shadow-lg transition-all cursor-pointer" routerLink="/new">
+                    Nuevo contacto
+                </a>
+            </div>
+            <div class="table-responsive">   
+                <table class="min-w-full bg-gray-800 border border-gray-700 rounded-lg shadow-md overflow-hidden">
+                    <thead>
+                        <tr class="bg-gray-700 text-white">
+                            <th class="py-2 px-4 border-b text-center" style="color: #FFFF00;">Id</th>
+                            <th class="py-2 px-4 border-b text-center" style="color: #FFFF00;">Nombre</th>
+                            <th class="py-2 px-4 border-b text-center" style="color: #FFFF00;">Email</th>
+                            <th class="py-2 px-4 border-b text-center" style="color: #FFFF00;">Fecha de creación</th>
+                            <th class="py-2 px-4 border-b"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (contact of contacts; track contact.id) {
+                            <tr class="bg-gray-800 text-white">
+                                <td class="py-2 px-4 border-b text-center text-white">{{ contact.id }}</td>
+                                <td class="py-2 px-4 border-b text-center neon-background">{{ contact.name }}</td>
+                                <td class="py-2 px-4 border-b text-center text-white">{{ contact.email }}</td>
+                                <td class="py-2 px-4 border-b text-center text-white">{{ contact.createdAt | date: 'dd/MM/yyyy hh:mm a' }}</td>
+                                <td class="text-center py-2 px-4 border-b">
+                                    <div class="flex justify-center flex-col space-y-1 sm:flex-row sm:space-x-2">
+                                        <button class="neon-button-edit font-bold py-1 px-2 rounded" [routerLink]="['/edit', contact.id]">
+                                            Editar
+                                        </button>
+                                        <button class="neon-button-delete font-bold py-1 px-2 rounded" (click)="deleteContact(contact)">
+                                            Eliminar
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+.neon-shadow-label {
+    text-shadow: 0 0 3px #FF00FF, 0 0 6px #FF00FF, 0 0 10px #FF00FF, 0 0 15px #FF00FF;
+}
+
+.neon-button {
+    color: #4b0082;
+    border: 2px solid #00ffea;
+    background-color: #00ffea;
+    transition: all 0.3s ease;
+}
+
+.neon-button:hover {
+    background-color: #00d4c4;
+    border-color: #00d4c4;
+    box-shadow: 0 0 20px #00d4c4, 0 0 30px #00d4c4, 0 0 40px #00d4c4;
+    transform: scale(1.05);
+}
+
+.neon-button-delete {
+    color: white;
+    border: 2px solid #ff5e57;
+    background-color: #ff5e57;
+    transition: all 0.3s ease;
+}
+
+.neon-button-delete:hover {
+    background-color: #ff3b2f;
+    border-color: #ff3b2f;
+    box-shadow: 0 0 20px #ff3b2f, 0 0 30px #ff3b2f, 0 0 40px #ff3b2f;
+    transform: scale(1.05);
+}

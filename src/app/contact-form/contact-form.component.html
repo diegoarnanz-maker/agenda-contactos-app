@@ -1,0 +1,48 @@
+<div class="min-h-screen bg-gray-900 flex items-center justify-center">
+    <div class="bg-gray-800 p-6 rounded-lg shadow-lg w-full max-w-md">
+        <h2 class="mb-5 text-center text-2xl font-bold text-white">
+            @if (contact) {
+                Editar contacto
+            } @else {
+                Nuevo contacto
+            }
+        </h2>
+
+        <form [formGroup]="form" (ngSubmit)="save()">
+            <div class="mb-4">
+                <label for="name" class="block text-gray-200 neon-shadow-label">Nombre</label>
+                <input type="text" class="form-control w-full p-2 border border-gray-300 rounded bg-gray-700 text-white" id="name" name="name" placeholder="Nombre" formControlName="name">
+                @if (form.get('name')?.invalid && form.get('name')?.touched) {
+                    <div class="text-red-500">El nombre es obligatorio.</div>
+                }
+            </div>
+
+            <div class="mb-4">
+                <label for="email" class="block text-gray-200 neon-shadow-label">Email</label>
+                <input type="email" class="form-control w-full p-2 border border-gray-300 rounded bg-gray-700 text-white" id="email" name="email" placeholder="Email" formControlName="email">
+                @if (form.get('email')?.invalid && form.get('email')?.touched) {
+                    @if (form.get('email')?.errors?.['required']) {
+                        <div class="text-red-500">El correo es obligatorio.</div>
+                    }
+                    @if (form.get('email')?.errors?.['email']) {
+                        <div class="text-red-500">El formato del correo no es válido.</div>
+                    }
+                }
+            </div>
+
+            <div class="text-end">
+                <button type="button" class="neon-button-delete py-2 px-4 rounded mr-2" routerLink="/" deleteCon>
+                    Cancelar
+                </button>
+
+                <button type="submit" class="neon-button py-2 px-4 rounded">
+                    @if(contact) {
+                        Actualizar
+                    } @else {
+                        Crear
+                    }
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
